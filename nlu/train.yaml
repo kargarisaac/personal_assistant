@@ -1,4 +1,5 @@
 commands:
+    # Time
     - command:
       input:
           - What time is it?
@@ -6,6 +7,7 @@ commands:
           - Time.
       entity: time
       action: getTime
+    # Date
     - command:
       input:
           - What date is it?
@@ -13,6 +15,7 @@ commands:
           - Date.
       entity: time
       action: getDate
+    # Year
     - command:
       input:
           - What year is it?
@@ -20,6 +23,7 @@ commands:
           - Year.
       entity: time
       action: getYear
+    # Weather
     - command:
       input:
           - What the weather?
