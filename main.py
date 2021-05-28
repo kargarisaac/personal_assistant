@@ -3,6 +3,7 @@ import os
 import pyaudio
 import pyttsx3
 import json
+from core import SystemInfo
 
 ## =========== speech synthesis ============
 engine = pyttsx3.init()
@@ -32,10 +33,13 @@ while True:
         break
     if rec.AcceptWaveform(data):
         result = rec.Result()
-        # result is a string of dict "{}"
+        # result is a string of dict "{}" -> covert it to text and get the text only
         result_dict = json.loads(result)
         text = result_dict['text']
-        print(text)
-        speak(text)
+
+        if text == "what time is it" or text == "tell me the time":
+            res = SystemInfo.get_time()
+            print(res)
+            speak(res)
 
     
