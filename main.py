@@ -1,7 +1,23 @@
 from vosk import Model, KaldiRecognizer
 import os
 import pyaudio
+import pyttsx3
+import json
 
+## =========== speech synthesis ============
+engine = pyttsx3.init()
+
+
+def speak(text: str) -> None:
+    """generates voice for a given text
+
+    Args:
+        text ([str]): a text to be generated
+    """
+    engine.say(text)
+    engine.runAndWait()
+
+## =========== speech recognition ==========
 model = Model("model")
 rec = KaldiRecognizer(model, 16000)
 
@@ -15,9 +31,11 @@ while True:
     if len(data) == 0:
         break
     if rec.AcceptWaveform(data):
-        print(rec.Result())
-    else:
-        print(rec.PartialResult())
+        result = rec.Result()
+        # result is a string of dict "{}"
+        result_dict = json.loads(result)
+        text = result_dict['text']
+        print(text)
+        speak(text)
 
-# print(rec.FinalResult())
     
