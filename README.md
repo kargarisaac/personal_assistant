@@ -2,6 +2,6 @@
 
 Modules:
 
--   Speech to text
--   Text to speech
--   AI chatbot
+-   Speech to text -> vosk and kaldi
+-   Text to speech -> pyttsx3
+-   AI chatbot ->
