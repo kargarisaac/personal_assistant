@@ -3,7 +3,6 @@ import os
 import pyaudio
 import pyttsx3
 import json
-from core import SystemInfo
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
@@ -49,17 +48,18 @@ while True:
 
         print(f'User input: {text}')
 
-        ''' encode user input and feed it into QA model'''
-        new_user_input_ids = tokenizer.encode(text + tokenizer.eos_token, return_tensors='pt')
-        # append the new user input tokens to the chat history
-        bot_input_ids = torch.cat([chat_history_ids, new_user_input_ids], dim=-1) if step > 0 else new_user_input_ids
-        # generated a response while limiting the total chat history to 1000 tokens, 
-        chat_history_ids = qa_model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
-        answer = tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
-        print(f"bot's answer: {answer}")
+        if 'isaac' in text:
+            ''' encode user input and feed it into QA model'''
+            new_user_input_ids = tokenizer.encode(text + tokenizer.eos_token, return_tensors='pt')
+            # append the new user input tokens to the chat history
+            bot_input_ids = torch.cat([chat_history_ids, new_user_input_ids], dim=-1) if step > 0 else new_user_input_ids
+            # generated a response while limiting the total chat history to 1000 tokens, 
+            chat_history_ids = qa_model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id)
+            answer = tokenizer.decode(chat_history_ids[:, bot_input_ids.shape[-1]:][0], skip_special_tokens=True)
+            print(f"bot's answer: {answer}")
 
-        '''convert answer to speech'''
-        speak(answer)
+            '''convert answer to speech'''
+            speak(answer)
 
         step += 1 # increase step for next user input
     

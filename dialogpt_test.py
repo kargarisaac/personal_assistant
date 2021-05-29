@@ -2,9 +2,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
 
+tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-medium")
+model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-medium")
 
 # Let's chat for 5 lines
-for step in range(5):
+for step in range(50):
     # encode the new user input, add the eos_token and return a tensor in Pytorch
     new_user_input_ids = tokenizer.encode(input(">> User:") + tokenizer.eos_token, return_tensors='pt')
 
