@@ -16,6 +16,9 @@
 
 ## References:
 
+-   How to Create Your Virtual Assistant with Python: https://www.youtube.com/playlist?list=PL39zyvnHdXh_49CscgyFrJVSGio5zZlIn
+-   Chat Bot With PyTorch - NLP And Deep Learning - Python Tutorial : https://www.youtube.com/playlist?list=PLqnslRFeH2UrFW4AUgn-eY37qOAWQpJyg
+-   Intelligent AI Chatbot in Python: https://www.youtube.com/watch?v=1lwddP0KUEg
 -   Building a chatbot with Rasa NLU and Rasa Core: https://www.youtube.com/watch?v=xu6D_vLP5vY
 -   Developer Webinar: How to develop your own AI assistant in healthcare: https://www.youtube.com/watch?v=szZJ0q8Yx7I
 -   An Open-Source Chatbot Made With Rasa: https://www.youtube.com/watch?v=sazsWmP2d3o
